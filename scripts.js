@@ -18,6 +18,11 @@ function createGrid() {
     for (let i = 0; i < x*y && i < 256; i++) {
         let box = document.createElement('div');
         box.className = 'box';
+        box.addEventListener('mouseover', (event) => {
+            console.log(event.target);
+            event.target.className = 'box-transition';
+            console.log(event.target.className);
+        })
         gridContainer.appendChild(box);
     }
     console.log('boxes created');
@@ -26,4 +31,3 @@ function createGrid() {
 window.addEventListener('resize', function() {
     createGrid();
 });
-
