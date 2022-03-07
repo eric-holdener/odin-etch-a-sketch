@@ -1,4 +1,4 @@
-.box {
+.box, .box-transition {
     width: 50px;
     height: 50px;
     padding: 4px;
@@ -9,7 +9,7 @@
     box-sizing: border-box;
     display: inline-block;
     border: 4px solid #fff;
-    background-color: #ddd;
+    background-color: black;
   }
 
 html, body {
@@ -19,6 +19,13 @@ html, body {
   margin: 0;
 }
 
-#container {
+#grid-container {
     font-size: 0;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 3px;
   }
+
+.box-transition {
+  background-color: aqua;
+}
