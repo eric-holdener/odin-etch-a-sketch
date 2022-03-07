@@ -9,6 +9,11 @@
     <title>Etch a Sketch</title>
 </head>
 <body>
+    <button id="clear-game">Reset Board</button>
     <div id="grid-container"></div>
 </body>
+<script>
+    let btn = document.querySelector("#clear-game");
+    btn.addEventListener('click', clearGame())
+</script>
 </html>
