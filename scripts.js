@@ -4,19 +4,16 @@ window.addEventListener('load', function() {
 
 function createGrid(newColumnLength) {
     let gridContainer = document.getElementById('grid-container');
-    gridContainer.style.gridtemplatecolumns = newColumnLength;
+    gridContainer.style.setProperty('grid-template-columns', 
+        `repeat(${newColumnLength}, 1fr)`);
 
     if (gridContainer.childNodes.length > 0) {
         while (gridContainer.firstChild) {
             gridContainer.removeChild(gridContainer.firstChild);
         }
     }
-
-    let x = Math.floor(window.innerWidth / 50);
-    let y = Math.floor(window.innerHeight / 50);
     
-    console.log('creating boxes');
-    for (let i = 0; i < x*y && i < newColumnLength**2; i++) {
+    for (let i = 0; i < (newColumnLength * newColumnLength); i++) {
         let box = document.createElement('div');
         box.className = 'box';
         box.addEventListener('mouseover', (event) => {
@@ -29,5 +26,10 @@ function createGrid(newColumnLength) {
 function clearGame() {
     let gameSize = prompt('What size of board do you want?', 16);
     gameSize = parseInt(gameSize);
-    createGrid(gameSize);
+    if (gameSize > 100) {
+        alert('That board is too big! Please pick a smaller size!');
+        clearGame();
+    } else {
+        createGrid(gameSize);
+    }
 }
